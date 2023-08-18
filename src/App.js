@@ -8,7 +8,9 @@ function App() {
   const handleButtonClick = (value) => {
     if (value === '=') {
       try {
-        setResult(eval(input).toString());
+        // eslint-disable-next-line
+        const calculatedResult = new Function('return ' + input)();
+        setResult(calculatedResult.toString());
       } catch (error) {
         setResult('Error');
       }
